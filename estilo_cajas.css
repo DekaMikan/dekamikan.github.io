@@ -1,0 +1,16 @@
+article {
+    border: 1px black solid;
+    width: 100px;
+    
+}
+
+.menor8 {
+    color: #f3c623;
+    background-color: #10375c;
+}
+
+.mayor8 {
+    color: #10375c;
+    background-color: #f3c623;
+    float:left;
+}

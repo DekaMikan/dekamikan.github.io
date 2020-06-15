@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <p id="operacion"></p>
+			<input disabled id="pantalla">
+			<div class="cuadro">
+				<div class="numeros">
+					<button type="button" id="1" onclick="ingresarNumero(this)">1</button>
+					<button type="button" id="2" onclick="ingresarNumero(this)">2</button>
+					<button type="button" id="3" onclick="ingresarNumero(this)">3</button><br>				
+					<button type="button" id="4" onclick="ingresarNumero(this)">4</button>
+					<button type="button" id="5" onclick="ingresarNumero(this)">5</button>
+                                        <button type="button" id="6" onclick="ingresarNumero(this)">6</button><br>
+					<button type="button" id="7" onclick="ingresarNumero(this)">7</button>
+					<button type="button" id="8" onclick="ingresarNumero(this)">8</button>
+					<button type="button" id="9" onclick="ingresarNumero(this)">9</button><br>
+					<button type="button" id="=" onclick="resultado()">=</button>
+					<button type="button" id="0" onclick="ingresarNumero(this)">0</button>
+					<button type="button" id="." onclick="ingresarNumero(this)">.</button>
+				</div>
+				<div class="operadores">
+					<button type="button" id="+" onclick="operador(this)">+</button>
+					<button type="button" id="-" onclick="operador(this)">-</button>												
+					<button type="button" id="x" onclick="operador(this)">x</button>
+					<button type="button" id="/" onclick="operador(this)">/</button>			
+					<button type="button" id="cb" onclick="limpiar()" style="background-color: blue; color: white;" >Clean</button>
+				</div>
+			</div>
+					
+		<script>
+			var numeros=0;	
+			var operator;	
+			var result=0;
+			var input = document.getElementById("pantalla");
+			var textOperacion = document.getElementById("operacion");
+			
+			function limpiar(){							
+				input.value="";	
+				textOperacion.textContent="";
+				numeros=0;
+				newNumero=0;
+				operator="";				
+				result=0;
+			}
+			
+			function operador(e){											
+				textOperacion.textContent+=input.value+" ";				
+				switch(e.textContent){
+					case "+":
+						
+						if(operator!=undefined){
+							calcular(operator,"+");						
+					   	}else{
+							textOperacion.textContent+=e.textContent+" ";							
+							numeros=parseFloat(input.value);
+							input.value="";
+							operator="+";
+						}
+						
+					break;
+					case "-":											
+						if(operator!=undefined){							
+							calcular(operator,"-");						
+						}else{							
+							textOperacion.textContent+=e.textContent+" ";							
+							numeros=parseFloat(input.value);
+							input.value="";
+							operator="-";
+						}										
+					break;
+						
+					case "x":
+
+						if(operator!=undefined){
+							calcular(operator,"x");							
+					   	}else{
+							textOperacion.textContent+=e.textContent+" ";								
+							numeros=parseFloat(input.value);
+							input.value="";
+							operator="x";
+						}
+
+		
+					break;
+					case "/":
+											
+						if(operator!=undefined){
+							calcular(operator,"/");
+							console.log("pito");
+					   	}else{
+							textOperacion.textContent+=e.textContent+" ";							
+							numeros=parseFloat(input.value);
+							input.value="";
+							operator="/";
+						}
+
+					break;
+					}									
+			}
+			
+			function resultado(){
+				if(operator!=undefined){
+					switch(operator){
+						case "+":
+							result=numeros+parseFloat(input.value);
+						break;
+						case "-":
+							result=numeros-parseFloat(input.value);
+						break;
+						case "x":
+							result=numeros*parseFloat(input.value);
+						break;
+						case "/":
+							result=numeros/parseFloat(input.value);
+						break;							
+					}											
+															
+					textOperacion.textContent=numeros+" "+operator+" "+input.value;				
+					input.value=result;				
+					numeros=result;
+				}				
+			}
+			
+			function calcular(operador,nuevoOperador){
+				switch(operador){
+					case "+":								
+						result=numeros+parseFloat(input.value);
+						console.log(result);						
+						textOperacion.textContent=result+" "+nuevoOperador;
+						numeros=result;
+						input.value="";
+						operator=nuevoOperador;
+					break;
+					case "-":
+						result=numeros-parseFloat(input.value);
+						console.log(result);
+						textOperacion.textContent=result+" "+nuevoOperador;
+						numeros=result;
+						input.value="";
+						operator=nuevoOperador;
+					break;
+					case "x":
+						result=numeros*parseFloat(input.value);
+						console.log(result);
+						textOperacion.textContent=result+" "+nuevoOperador;
+						numeros=result;
+						input.value="";
+						operator=nuevoOperador;
+					break;
+					case "/":
+						result=numeros/parseFloat(input.value);
+						console.log(result);
+						textOperacion.textContent=result+" "+nuevoOperador;
+						numeros=result;
+						input.value="";
+						operator=nuevoOperador;
+					break;					   
+			   	}
+				
+				
+				
+			}
+			
+			function ingresarNumero(e){
+				if(e.textContent==="="){
+					
+			   	}else if(e.textContent==="."){
+					if(input.value===""){
+					   	input.value="0."
+					}else{
+						var inputContent = input.value.split("");
+						var pasa = true;
+						for(var i=0;i<inputContent.length;i++){
+							if(inputContent[i]==="."){								
+								pasa = false;								
+								break;   
+						   	}
+						}
+						if(pasa){
+						   	input.value+=".";
+						   }
+					}
+			   	}else if(e.textContent==="0"){
+					if(!(input.value==="0" || input.value==="0.0")){
+					   input.value+="0";
+				   	}
+				}
+				else{
+				   	input.value+=e.textContent;	   
+			   	}
+				
+				
+			}
+			
+		
+		
+		
+		</script>
+	</body>
+</html>
