@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tarjetas chidas</title>
+</head>
+<body>
+	<form action="r_formulario_tarjeta.html" method="GET">
+		<h2>¡Elije la ocasión de la tarjeta!</h2>
+		<input type="radio" id="sanvalentin" name="evento" value="Sanvalentin">
+		<label for="sanvalentin">Tarjeta de San Valentin</label><br>
+		<input type="radio" id="cumpleanos" name="evento" value="Cumpleanos">
+		<label for="cumpleanos">Tarjeta de Cumpleaños</label><br>
+		<input type="radio" id="felicitacion" name="evento" value="Felicitacion">
+		<label for="felicitacion">Tarjeta de Felicitacion</label><br>
+
+		<h2>¡Elije una imagén para la tarjeta!</h2>
+		<input type="radio" id="imagen_sanvalentin" name="imagen" value="Sanvalentin">
+		<label for="imagen_sanvalentin"><img width="250px" height="250px" src="amor.png" /></label>
+		<input type="radio" id="imagen_cumpleanos" name="imagen" value="Cumpleanos">
+		<label for="imagen_cumpleanos"><img width="250px" height="250px" src="cumpleaños.png" /></label>
+		<input type="radio" id="imagen_felicitacion" name="imagen" value="Felicitacion">
+		<label for="imagen_felicitacion"><img width="250px" height="250px" src="felicitacion.png" /></label>
+
+		<h2>Ingrese los siguientes datos porfavor</h2>
+		<label for="titulo">Titulo</label><br>
+		<input type="text" name="titulo" id="titulo"/><br>
+		<label for="subtitulo">Subtitulo</label><br>
+		<input type="text" name="subtitulo" id="subtitulo"/><br>
+		<label for="destinatario">Nombre del destinatario</label><br>
+		<input type="text" name="nombreD" id="destinatario"/><br>
+		<label for="autor">Nombre del autor</label><br>
+		<input type="text" name="nombreA" id="autor"/><br>
+		<label for="mensaje">Mensaje para el destinatarío</label><br>
+		<textarea name="mensaje" id= "mensaje" placeholder= "Ingrese el texto que desea colocar en la tarjeta" rows="12" cols="80"></textarea>
+
+		<h2>¿Que color deseas que sea tu tarjeta?</h2>
+		<input type="radio" name="color" id="rojo" value="ff0000" />
+		<label for="rojo">Rojo</label><br />
+		<input type="radio" name="color" id="azul" value="00d7ff" />
+		<label for="azul">Azul</label><br />
+		<input type="radio" name="color" id="amarillo" value="ffe600" />
+		<label for="amarillo">Amarillo</label><br />
+
+		<input type="submit">
+	</form>
+</body>
+</html>
